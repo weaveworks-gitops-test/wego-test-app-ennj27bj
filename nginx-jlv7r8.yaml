@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-jlv7r8
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-jlv7r8
+  namespace: my-nginx-jlv7r8
+  labels:
+    name: nginx-jlv7r8
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-jlv7r8
+  template:
+    metadata:
+      namespace: my-nginx-jlv7r8
+      labels:
+        name: nginx-jlv7r8
+    spec:
+      containers:
+      - name: nginx-jlv7r8
+        image: nginx
+        ports:
+        - containerPort: 80
+
